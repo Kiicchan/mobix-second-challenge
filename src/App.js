@@ -1,6 +1,7 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/material";
+import { FormContextProvider } from "./contexts/FormContext";
 const theme = createTheme({
   palette: {
     mode: "dark",
@@ -20,7 +21,9 @@ function App() {
             alignItems: "center",
             justifyContent: "center",
           }}
-        ></Box>
+        >
+          <FormContextProvider></FormContextProvider>
+        </Box>
       </ThemeProvider>
     </>
   );
