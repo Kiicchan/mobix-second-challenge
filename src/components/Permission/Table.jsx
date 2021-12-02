@@ -10,14 +10,14 @@ import {
 import PermissionCells from "./Cells";
 import { useContext } from "react";
 import FormContext from "../../contexts/FormContext";
-import ExpandableTableRow from "../ui/ExpandableTableRow";
+import ModuleRow from "./Module";
 
 export default function PermissionTable(props) {
   const { state } = useContext(FormContext);
   const { permissions, modules } = state;
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell />
@@ -36,11 +36,7 @@ export default function PermissionTable(props) {
             <PermissionCells label="Todos" expanded />
           </TableRow>
           {modules.map((module) => {
-            return (
-              <ExpandableTableRow key={module.name}>
-                <PermissionCells label={module.name}></PermissionCells>
-              </ExpandableTableRow>
-            );
+            return <ModuleRow key={module.name} module={module} />;
           })}
         </TableBody>
       </Table>

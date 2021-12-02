@@ -21,12 +21,7 @@ export default function ExpandableTableRow({
         </TableCell>
         {children}
       </TableRow>
-      {isExpanded && (
-        <TableRow>
-          <TableCell padding="checkbox" />
-          {expandComponent}
-        </TableRow>
-      )}
+      {isExpanded && expandComponent}
     </>
   );
 }

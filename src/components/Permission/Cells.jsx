@@ -12,7 +12,7 @@ export default function PermissionCells({ label, expanded }) {
       {permissions.map((permission) => {
         return (
           <TableCell key={permission} align="center">
-            <Checkbox defaultChecked />
+            <Checkbox defaultChecked color="primary" />
           </TableCell>
         );
       })}
