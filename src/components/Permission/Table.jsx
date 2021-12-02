@@ -7,10 +7,10 @@ import {
   TableBody,
   Paper,
 } from "@mui/material";
-import PermissionCells from "./PermissionCells";
+import PermissionCells from "./Cells";
 import { useContext } from "react";
 import FormContext from "../../contexts/FormContext";
-import ExpandableTableRow from "./ExpandableTableRow";
+import ExpandableTableRow from "../ui/ExpandableTableRow";
 
 export default function PermissionTable(props) {
   const { state } = useContext(FormContext);
