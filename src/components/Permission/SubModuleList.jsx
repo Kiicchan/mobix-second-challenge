@@ -1,5 +1,5 @@
 import { TableRow } from "@mui/material";
-import PermissionCells from "./Cells";
+import CellGroup from "./CellGroup";
 
 export default function SubModuleList({ submodules }) {
   return (
@@ -7,7 +7,7 @@ export default function SubModuleList({ submodules }) {
       {submodules.map((submodule) => {
         return (
           <TableRow key={submodule} sx={{ bgcolor: "background.paper" }}>
-            <PermissionCells label={submodule} expanded />
+            <CellGroup label={submodule} expanded type="submodule" />
           </TableRow>
         );
       })}

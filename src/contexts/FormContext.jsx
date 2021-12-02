@@ -13,19 +13,33 @@ const reducer = (state, action) => {
 };
 
 function init({ permissions, modules }) {
-  //   const state = {};
-  //   modules.forEach((module) => {
-  //     module.submodules.forEach((submodule) => {
-  //       permissions.forEach((permission) => {
-  //         state[module.name] = {};
-  //         state[module.name][submodule] = {};
-  //         state[module.name][submodule][permission] = true;
-  //       });
+  // const formState = {};
+  // modules.forEach((module) => {
+  //   module.submodules.forEach((submodule) => {
+  //     permissions.forEach((permission) => {
+  //       formState[module.name] = {};
+  //       formState[module.name][submodule] = {};
+  //       formState[module.name][submodule][permission] = true;
   //     });
   //   });
+  // });
+  const formState = [];
+  modules.forEach((module) => {
+    module.submodules.forEach((submodule) => {
+      permissions.forEach((permission) => {
+        formState.push({
+          module: module.name,
+          submodule,
+          permission,
+          value: true,
+        });
+      });
+    });
+  });
   return {
     permissions,
     modules,
+    formState,
   };
 }
 

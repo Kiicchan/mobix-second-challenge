@@ -1,5 +1,5 @@
 import ExpandableTableRow from "../ui/ExpandableTableRow";
-import PermissionCells from "./Cells";
+import CellGroup from "./CellGroup";
 import SubModuleList from "./SubModuleList";
 
 export default function ModuleRow({ module }) {
@@ -8,7 +8,7 @@ export default function ModuleRow({ module }) {
       key={module.name}
       expandComponent={<SubModuleList submodules={module.submodules} />}
     >
-      <PermissionCells label={module.name}></PermissionCells>
+      <CellGroup label={module.name} type="module" />
     </ExpandableTableRow>
   );
 }

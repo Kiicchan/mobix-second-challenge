@@ -7,7 +7,7 @@ import {
   TableBody,
   Paper,
 } from "@mui/material";
-import PermissionCells from "./Cells";
+import CellGroup from "./CellGroup";
 import { useContext } from "react";
 import FormContext from "../../contexts/FormContext";
 import ModuleRow from "./Module";
@@ -33,7 +33,7 @@ export default function PermissionTable(props) {
         </TableHead>
         <TableBody>
           <TableRow>
-            <PermissionCells label="Todos" expanded />
+            <CellGroup label="Todos" expanded type="all" />
           </TableRow>
           {modules.map((module) => {
             return <ModuleRow key={module.name} module={module} />;
