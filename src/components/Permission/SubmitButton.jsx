@@ -12,7 +12,7 @@ export default function SubmitButton() {
         return element.value;
       })
       .map((element) => {
-        return `${element.permission} em ${element.submodule}`;
+        return `${element.submodule} - ${element.permission}`;
       });
     console.log(permissionList);
   };

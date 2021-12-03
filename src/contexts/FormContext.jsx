@@ -9,23 +9,32 @@ const reducer = (state, action) => {
   const { label, permission, value } = action.payload;
   switch (action.type) {
     case "submodule":
-      element = newFormState.find((element) => {
+      // element = newFormState.find((element) => {
+      //   return element.submodule === label && element.permission === permission;
+      // });
+      let index = newFormState.findIndex((element) => {
         return element.submodule === label && element.permission === permission;
       });
-      element.value = value;
+      // element.value = value;
+      // A documentação do react sugere que não se modifique valores de estado diretamente.
+      // Por isso, usa-se o spread para criar novos objetos e adicioná-los a um novo array
+      element = newFormState[index];
+      newFormState[index] = { ...element, value: value };
       return { ...state, formState: newFormState };
 
     case "module":
-      newFormState.forEach((element) => {
+      newFormState.forEach((element, index, array) => {
         if (element.module === label && element.permission === permission) {
-          element.value = value;
+          // element.value = value;
+          array[index] = { ...element, value: value };
         }
       });
       return { ...state, formState: newFormState };
     case "all":
-      newFormState.forEach((element) => {
+      newFormState.forEach((element, index, array) => {
         if (element.permission === permission) {
-          element.value = value;
+          // element.value = value;
+          array[index] = { ...element, value: value };
         }
       });
       return { ...state, formState: newFormState };

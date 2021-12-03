@@ -5,10 +5,11 @@ import { FormContextProvider } from "./contexts/FormContext";
 import PermissionTable from "./components/Permission/Table";
 import PermissionSubmitButton from "./components/Permission/SubmitButton";
 const theme = createTheme({
-  // palette: {
-  //   mode: "dark",
-  // },
+  palette: {
+    mode: "dark",
+  },
 });
+// a tabela de permissões é compatível com os temas do material UI
 
 function App() {
   return (
