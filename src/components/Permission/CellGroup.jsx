@@ -45,7 +45,7 @@ export default function CellGroup({ label, expanded, type }) {
   return (
     <>
       {expanded ? <TableCell /> : null}
-      <TableCell align="center">{label}</TableCell>
+      <TableCell align="left">{label}</TableCell>
       {permissions.map((permission) => {
         return (
           <TableCell key={permission} align="center">

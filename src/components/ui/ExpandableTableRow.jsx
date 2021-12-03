@@ -14,7 +14,7 @@ export default function ExpandableTableRow({
   return (
     <>
       <TableRow {...otherProps}>
-        <TableCell padding="checkbox">
+        <TableCell>
           <IconButton onClick={() => setIsExpanded(!isExpanded)}>
             {isExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>

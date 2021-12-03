@@ -17,7 +17,7 @@ export default function PermissionTable(props) {
   const { permissions, modules } = state;
   return (
     <TableContainer component={Paper}>
-      <Table size="small">
+      <Table size="medium" padding="checkbox" aria-label="permission table">
         <TableHead>
           <TableRow>
             <TableCell />
@@ -32,7 +32,7 @@ export default function PermissionTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
+          <TableRow sx={{ bgcolor: "text.disabled" }}>
             <CellGroup label="Todos" expanded type="all" />
           </TableRow>
           {modules.map((module) => {

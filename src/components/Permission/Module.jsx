@@ -6,6 +6,7 @@ export default function ModuleRow({ module }) {
   return (
     <ExpandableTableRow
       key={module.name}
+      sx={{ bgcolor: "divider" }}
       expandComponent={<SubModuleList submodules={module.submodules} />}
     >
       <CellGroup label={module.name} type="module" />
