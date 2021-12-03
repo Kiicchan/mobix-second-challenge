@@ -3,7 +3,7 @@ import { useContext } from "react";
 import FormContext from "../../contexts/FormContext";
 
 export default function CellGroup({ label, expanded, type }) {
-  const { state } = useContext(FormContext);
+  const { state, dispatch } = useContext(FormContext);
   const { permissions, formState } = state;
   const isChecked = (permission) => {
     let element;
@@ -19,16 +19,22 @@ export default function CellGroup({ label, expanded, type }) {
       case "module":
         checked = formState
           .filter((element) => {
-            return element.module === label;
+            return (
+              element.module === label && element.permission === permission
+            );
           })
           .every((element) => {
             return element.value === true;
           });
         return checked;
       case "all":
-        checked = formState.every((element) => {
-          return element.value === true;
-        });
+        checked = formState
+          .filter((element) => {
+            return element.permission === permission;
+          })
+          .every((element) => {
+            return element.value === true;
+          });
         return checked;
 
       default:
@@ -43,7 +49,16 @@ export default function CellGroup({ label, expanded, type }) {
       {permissions.map((permission) => {
         return (
           <TableCell key={permission} align="center">
-            <Checkbox color="primary" checked={isChecked(permission)} />
+            <Checkbox
+              color="primary"
+              checked={isChecked(permission)}
+              onClick={(ev) =>
+                dispatch({
+                  type,
+                  payload: { label, permission, value: ev.target.checked },
+                })
+              }
+            />
           </TableCell>
         );
       })}

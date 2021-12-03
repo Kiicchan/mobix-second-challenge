@@ -9,7 +9,7 @@ export default function ExpandableTableRow({
   expandComponent,
   ...otherProps
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   return (
     <>

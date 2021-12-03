@@ -3,9 +3,32 @@ const FormContext = createContext();
 export default FormContext;
 
 const reducer = (state, action) => {
+  const { formState } = state;
+  let newFormState = [...formState];
+  let element;
+  const { label, permission, value } = action.payload;
   switch (action.type) {
-    case "value":
-      return { ...state };
+    case "submodule":
+      element = newFormState.find((element) => {
+        return element.submodule === label && element.permission === permission;
+      });
+      element.value = value;
+      return { ...state, formState: newFormState };
+
+    case "module":
+      newFormState.forEach((element) => {
+        if (element.module === label && element.permission === permission) {
+          element.value = value;
+        }
+      });
+      return { ...state, formState: newFormState };
+    case "all":
+      newFormState.forEach((element) => {
+        if (element.permission === permission) {
+          element.value = value;
+        }
+      });
+      return { ...state, formState: newFormState };
 
     default:
       break;
@@ -13,7 +36,7 @@ const reducer = (state, action) => {
 };
 
 function init({ permissions, modules }) {
-  // const formState = {};
+  // const formState = {};    //Uma árvore em vez de uma lista seria outro jeito de organizar o estado
   // modules.forEach((module) => {
   //   module.submodules.forEach((submodule) => {
   //     permissions.forEach((permission) => {
@@ -23,6 +46,7 @@ function init({ permissions, modules }) {
   //     });
   //   });
   // });
+  //um callback hell pq ninguém é de ferro
   const formState = [];
   modules.forEach((module) => {
     module.submodules.forEach((submodule) => {
@@ -36,6 +60,7 @@ function init({ permissions, modules }) {
       });
     });
   });
+  //o estado de cada permissão (módulo, submódulo, nome da permissão e checkbox) é armazenado numa lista
   return {
     permissions,
     modules,
@@ -45,6 +70,7 @@ function init({ permissions, modules }) {
 
 export function FormContextProvider({ children }) {
   const initialConfiguration = {
+    //Configuração da tabela: uma lista de permissões, e os módulos e seus submódulos listados
     permissions: ["Ver listagem", "Ver detalhes", "Criar", "Editar", "Deletar"],
     modules: [
       {
