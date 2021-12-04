@@ -58,6 +58,7 @@ export default function CellGroup({ label, expanded, type }) {
                   payload: { label, permission, value: ev.target.checked },
                 })
               }
+              inputProps={{ "aria-label": `${label} ${permission}` }}
             />
           </TableCell>
         );

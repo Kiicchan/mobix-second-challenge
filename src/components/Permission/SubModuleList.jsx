@@ -6,7 +6,11 @@ export default function SubModuleList({ submodules }) {
     <>
       {submodules.map((submodule) => {
         return (
-          <TableRow key={submodule} sx={{ bgcolor: "background.paper" }}>
+          <TableRow
+            aria-label={submodule}
+            key={submodule}
+            sx={{ bgcolor: "background.paper" }}
+          >
             <CellGroup label={submodule} expanded type="submodule" />
           </TableRow>
         );

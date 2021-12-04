@@ -8,6 +8,7 @@ export default function ModuleRow({ module }) {
       key={module.name}
       sx={{ bgcolor: "divider" }}
       expandComponent={<SubModuleList submodules={module.submodules} />}
+      aria-label={module.name}
     >
       <CellGroup label={module.name} type="module" />
     </ExpandableTableRow>
